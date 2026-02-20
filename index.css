@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --color-pack-bg: oklch(95.6% 0.01 90);
+  /* #F4F2EC equivalent */
+  --color-pack-white: oklch(100% 0 0);
+  /* #FFFFFF */
+  --color-pack-green: oklch(34% 0.08 160);
+  /* #0D4734 approx */
+  --color-pack-green-hover: oklch(30% 0.07 160);
+  /* #0A3929 */
+  --color-pack-text: oklch(20% 0 0);
+  /* #111111 */
+  --color-pack-gray: oklch(55% 0 0);
+  /* #717171 */
+  --color-pack-border: oklch(91% 0 0);
+  /* #E5E5E5 */
+  --color-pack-yellow: oklch(87% 0.12 90);
+  /* #F3D266 approx */
+  --color-pack-soft-white: oklch(98.5% 0 0);
+  /* #FAF9F6 */
+
+  --font-display: "Instrument Serif", serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", sans-serif;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+  --radius-4xl: 3rem;
+  --radius-5xl: 4rem;
+  --radius-full: 9999px;
+
+  --tracking-tighter: -0.04em;
+  --tracking-tight: -0.02em;
+
+  /* Custom animations for the editorial hero */
+  --animate-fade-in-up: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 45s linear infinite;
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0%);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes marquee-reverse {
+    from {
+      transform: translateX(-50%);
+    }
+
+    to {
+      transform: translateX(0%);
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-pack-bg text-pack-text font-sans antialiased selection:bg-pack-green selection:text-white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sans tracking-tight;
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+@utility hover-card {
+  @apply transition-transform duration-500 ease-out hover:-translate-y-1 hover:shadow-xl;
+}
